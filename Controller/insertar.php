@@ -1,6 +1,6 @@
 <?php
-    include_once('conexion.php');
-
+    include_once('Model/conexion.php');
+    include_once('Model/getEmpleados.php');
 
     if(isset($_POST['encargado_id'], $_POST['nombre'], $_POST['descripcion'])){
         $encargado = $_POST['encargado_id'];
@@ -68,4 +68,10 @@
     else{
         echo "Error Probando else";
     }
+
+
+        
+
+
 ?>
+
