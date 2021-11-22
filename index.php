@@ -36,7 +36,7 @@ $Encargados = getEncargados();
         <br />
         <input type="text" placeholder="Descripcion" name="descripcion">
         <br />
-        <button name="Departamento">Registrar Departamento</button>
+        <button name="RegistrarDepartamento">Registrar Departamento</button>
     </form>
 
 
@@ -85,7 +85,7 @@ $Encargados = getEncargados();
         <br />
         <input type="date" name="Efecha_entrada">
         <br />
-        <button>Registrar Encargado</button>
+        <button name="RegistrarEncargado">Registrar Encargado</button>
     </form>
 
 
@@ -142,7 +142,7 @@ $Encargados = getEncargados();
         <br />
         <input type="date" name="fecha_entrada">
         <br />
-        <button>Registrar Empleado</button>
+        <button name="RegistrarEmpleado">Registrar Empleado</button>
     </form>
 
 
