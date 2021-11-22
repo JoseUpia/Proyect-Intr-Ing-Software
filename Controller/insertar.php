@@ -1,7 +1,24 @@
 <?php
-    include_once('Model/conexion.php');
-    include_once('Model/getEmpleados.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
 
+    if(isset($_POST['Departamento'])){
+        $encargado = $_POST['encargado_id'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+
+        $consulta = "INSERT INTO departamento (Encargado_ID, Nombre, Descripcion) VALUES ('$encargado', '$nombre', '$descripcion')";
+
+        $resultado = mysqli_query($con, $consulta);
+
+        if($resultado){
+            header("Location: index.php");
+        }
+    }
+
+
+
+
+/*
     if(isset($_POST['encargado_id'], $_POST['nombre'], $_POST['descripcion'])){
         $encargado = $_POST['encargado_id'];
         $nombre = $_POST['nombre'];
@@ -69,7 +86,7 @@
         echo "Error Probando else";
     }
 
-
+*/
         
 
 

@@ -1,11 +1,10 @@
 <?php
 
-include_once('db/getEmpleados.php');
 
 
 function getEmpleados(){
     include('db/conexion.php');
-    $Empleados = $con->query("SELECT * FROM empleado");
+    $Empleados = $con->query("SELECT E.ID, D.Nombre AS D_Nombre, E.Nombre, E.Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', E.Direccion, E.Telefono, E.Puesto, E.Email, DATE_FORMAT(Fecha_Entrada,'%d/%m/%Y') AS 'Fecha_Entrada' FROM empleado AS E INNER JOIN departamento AS D ON E.Departamento_ID = D.ID;");
 
     return $Empleados;
 }
@@ -13,17 +12,17 @@ function getEmpleados(){
 
 function getDepartamentos(){
     include('db/conexion.php');
-    $Empleados = $con->query("SELECT * FROM departamento");
-
-    return $Empleados;
+    $Departamento = $con->query("SELECT D.ID, CONCAT_WS(' ', E.Nombre, E.Apellido) AS Encargado, D.Nombre as Departamento, D.Descripcion FROM departamento AS D INNER JOIN encargado AS E ON D.Encargado_ID = E.ID;");
+    
+    return $Departamento;
 }
 
 
 function getEncargados(){
     include('db/conexion.php');
-    $Empleados = $con->query("SELECT * FROM encargado");
+    $Encargado = $con->query("SELECT ID, Nombre, Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', Direccion, Telefono, Email, DATE_FORMAT(Fecha_Entrada, '%d/%m/%Y') AS 'Fecha_Entrada' FROM encargado;");
 
-    return $Empleados;
+    return $Encargado;
 }
 
 ?>

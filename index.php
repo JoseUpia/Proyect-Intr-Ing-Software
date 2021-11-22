@@ -1,6 +1,6 @@
 <?php
-include_once('db/conexion.php');
 include_once('Controller/mostrar.php');
+include_once('Controller/insertar.php');
 
 $Empleados = getEmpleados();
 $Departamentos = getDepartamentos();
@@ -8,17 +8,38 @@ $Encargados = getEncargados();
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<?php include('include/header.php') ?>
 
-<body>
+<br />
+    <H2>Departamentos</H2>
+    <table>
+        <tr>
+            <th>ID </th>
+            <th>Encargado </th>
+            <th>Departamento</th>
+            <th>Descripcion</th>
+        </tr>
+        <?php while ($fila = $Departamentos->fetch_object()) { ?>
+            <tr>
+                <td><?php echo $fila->ID; ?></td>
+                <td><?php echo $fila->Encargado; ?></td>
+                <td><?php echo $fila->Departamento; ?></td>
+                <td><?php echo $fila->Descripcion; ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+    <form action="Controller/insertar.php" method="post">
+        <input type="number" placeholder="ID del Encargado" name="encargado_id">
+        <br />
+        <input type="text" placeholder="Nombre" name="nombre">
+        <br />
+        <input type="text" placeholder="Descripcion" name="descripcion">
+        <br />
+        <button name="Departamento">Registrar Departamento</button>
+    </form>
+
+
     <br />
     <h2>Encargados</h2>
     <table>
@@ -45,7 +66,7 @@ $Encargados = getEncargados();
             </tr>
         <?php } ?>
     </table>
-    <form action="insertar.php" method="post">
+    <form action="Controller/insertar.php" method="post">
         <input type="text"placeholder="Nombre" name="Enombre">
         <br />
         <input type="text"placeholder="Apellido" name="Eapellido">
@@ -56,9 +77,9 @@ $Encargados = getEncargados();
         <br />
         <input type="text" placeholder="Dirección" name="Edireccion">
         <br />
-        <input type="text" placeholder="Telefono" name="Etelefono">
+        <input type="tel" placeholder="Telefono" name="Etelefono">
         <br />
-        <input type="text"placeholder="Email" name="Eemail">
+        <input type="email"placeholder="Email" name="Eemail">
         <br />
         <label>Fecha de Entrada</label>
         <br />
@@ -67,33 +88,7 @@ $Encargados = getEncargados();
         <button>Registrar Encargado</button>
     </form>
 
-    <br />
-    <H2>Departamentos</H2>
-    <table>
-        <tr>
-            <th>ID </th>
-            <th>Encargado_ID </th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-        </tr>
-        <?php while ($fila = $Departamentos->fetch_object()) { ?>
-            <tr>
-                <td><?php echo $fila->ID; ?></td>
-                <td><?php echo $fila->Encargado_ID; ?></td>
-                <td><?php echo $fila->Nombre; ?></td>
-                <td><?php echo $fila->Descripcion; ?></td>
-            </tr>
-        <?php } ?>
-    </table>
-    <form action="insertar.php" method="post">
-        <input type="text" placeholder="ID del Encargado" name="encargado_id">
-        <br />
-        <input type="text" placeholder="Nombre" name="nombre">
-        <br />
-        <input type="text" placeholder="Descripcion" name="descripcion">
-        <br />
-        <button>Registrar Departamento</button>
-    </form>
+
 
 
     <br />
@@ -114,7 +109,7 @@ $Encargados = getEncargados();
         <?php while ($fila = $Empleados->fetch_object()) { ?>
             <tr>
                 <td><?php echo $fila->ID; ?></td>
-                <td><?php echo $fila->Departamento_ID; ?></td>
+                <td><?php echo $fila->D_Nombre; ?></td>
                 <td><?php echo $fila->Nombre; ?></td>
                 <td><?php echo $fila->Apellido; ?></td>
                 <td><?php echo $fila->Fecha_Nacimiento; ?></td>
@@ -126,7 +121,7 @@ $Encargados = getEncargados();
             </tr>
         <?php } ?>
     </table>
-    <form action="insertar.php" method="post">
+    <form action="Controller/insertar.php" method="post">
         <input type="text" placeholder="ID del departamento" name="departamento_id" id="">
         <br />
         <input type="text" placeholder="Nombre" name="nombre">
@@ -139,9 +134,9 @@ $Encargados = getEncargados();
         <br />
         <input type="text" placeholder="Dirección" name="direccion">
         <br />
-        <input type="text" placeholder="Telefono" name="telefono">
+        <input type="tel" placeholder="Telefono" name="telefono">
         <br />
-        <input type="text" placeholder="Email" name="email">
+        <input type="email" placeholder="Email" name="email">
         <br />
         <label >Fecha de Entrada</label>
         <br />
@@ -151,6 +146,4 @@ $Encargados = getEncargados();
     </form>
 
 
-</body>
-
-</html>
+<?php include('include/footer.php') ?>
