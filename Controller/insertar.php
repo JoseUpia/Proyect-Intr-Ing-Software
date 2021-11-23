@@ -38,7 +38,7 @@
 
     function registrarEmpleado(){
         include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
-
+       
         if(isset($_POST['departamento_id'] ,$_POST['nombre'], $_POST['apellido'], $_POST['fecha_nacimiento'], $_POST['direccion'], $_POST['telefono'], $_POST['email'], $_POST['fecha_entrada'])){
             $departamento_id = $_POST['departamento_id'];
             $nombre = $_POST['nombre'];
