@@ -10,9 +10,9 @@ $Empleados = getEmpleados();
 <?php include('include/header.php') ?>
 <?php
 $_SESSION["incio"] = "inicio.php"; 
-$_SESSION["departamento"] = "view/crearDepartamento.php";
-$_SESSION["encargado"] = "view/crearEncargado.php";
-$_SESSION["empleado"] = "view/crear.php";
+$_SESSION["departamento"] = "Departamento.php";
+$_SESSION["encargado"] = "Encargado.php";
+$_SESSION["empleado"] = "inicio.php";
 include('include/nav.php'); 
 ?>
 

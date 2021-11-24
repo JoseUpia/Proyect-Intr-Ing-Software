@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
+include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
 $idempleado    	 = $_REQUEST['ID']; 
 
 $sqlDeleteProd    = ("DELETE FROM empleado WHERE  ID='" .$idempleado. "'");

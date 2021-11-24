@@ -41,7 +41,7 @@ $Encargados = getEncargados();
          
                 <td>
                 <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>                  
-                <a href="Controller/eliminar.php?idempleado=<?php echo $fila->ID;?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');" ><i class="fas fa-trash-alt"></i></a> 
+                <a href="Controller/eliminar.php?ID=<?php echo $fila->ID;?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');" ><i class="fas fa-trash-alt"></i></a> 
                </td>
                 
             </tr>

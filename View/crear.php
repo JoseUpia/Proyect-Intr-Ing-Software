@@ -17,15 +17,15 @@
 
 <?php
 include_once('../Controller/insertar.php');
-//Hola Mundo
+include('../include/nav.php');
 ?>
 
 <?php include("../include/header.php") ?>
 
- <main class="container">
+ <main class="container m-6">
     <h1>Registrar Empleado</h1>
+    <br/>
     <form action="../Controller/insertar.php" method="POST">
-
 
         <input type="text" class="form-control" placeholder="ID del departamento" name="departamento_id" required>
         <br />
