@@ -12,28 +12,30 @@ $_SESSION["empleado"] = "crear.php";
 include('../include/nav.php') 
 ?>
 
-
-    <form action="Controller/insertar.php" method="post">
-        <input type="text"placeholder="Nombre" name="Enombre">
+<main class="container m-10">
+    <h1>Registro de Encargado</h1>
+    <form action="../Controller/insertar.php" method="post">
+        <input type="text" class="form-control" placeholder="Nombre" name="Enombre" required>
         <br />
-        <input type="text"placeholder="Apellido" name="Eapellido">
+        <input type="text" class="form-control" placeholder="Apellido" name="Eapellido" required>
         <br />
         <label >Fecha de Nacimiento</label>
         <br />
-        <input type="date" name="Efecha_nacimiento">
+        <input type="date" class="form-control" name="Efecha_nacimiento" required>
         <br />
-        <input type="text" placeholder="Dirección" name="Edireccion">
+        <input type="text" class="form-control" placeholder="Dirección" name="Edireccion" required>
         <br />
-        <input type="tel" placeholder="Telefono" name="Etelefono">
+        <input type="tel" class="form-control" placeholder="Telefono" name="Etelefono" required>
         <br />
-        <input type="email"placeholder="Email" name="Eemail">
+        <input type="email" class="form-control" placeholder="Email" name="Eemail" required>
         <br />
         <label>Fecha de Entrada</label>
         <br />
-        <input type="date" name="Efecha_entrada">
+        <input type="date" class="form-control" name="Efecha_entrada">
         <br />
-        <button name="RegistrarEncargado">Registrar Encargado</button>
+        <button type="submit"  name="RegistrarEncargado" class="btn btn-primary  btn-lg btn-block">Registrar Encargado</button>
     </form>
+</main>
     
 
 

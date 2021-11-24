@@ -12,7 +12,7 @@
     }
 
     function registrarDepartamento(){
-        include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
+        include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
 
         if(isset($_POST['encargado_id'], $_POST['nombre'], $_POST['descripcion']) 
         AND $_POST['encargado_id'] != '' AND $_POST['nombre'] != '' AND $_POST['descripcion'] != ''){
@@ -28,7 +28,7 @@
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
                 
-                header("Location: ../inicio.php");
+                header("Location: ../Departamento.php");
             }
             else{
                 $_SESSION['titulo'] = '¡Error!';
@@ -48,7 +48,7 @@
     }
 
     function registrarEmpleado(){
-        include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
+        include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
        
         if(isset($_POST['departamento_id'] ,$_POST['nombre'], $_POST['apellido'], $_POST['fecha_nacimiento'], $_POST['direccion'], $_POST['telefono'], $_POST['email'], $_POST['fecha_entrada'])){
             $departamento_id = $_POST['departamento_id'];
@@ -90,7 +90,7 @@
 
 
     function registrarEncargado(){
-        include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
+        include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
 
         if(isset($_POST['Enombre'], $_POST['Eapellido'], $_POST['Efecha_nacimiento'], $_POST['Edireccion'], $_POST['Etelefono'], $_POST['Eemail'], $_POST['Efecha_entrada'])
         AND $_POST['Enombre'] != '' AND $_POST['Eapellido'] != '' AND $_POST['Efecha_nacimiento'] != '' AND $_POST['Edireccion'] != '' AND $_POST['Etelefono'] != ''
