@@ -1,18 +1,17 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/Controller/insertar.php');
 
+$_SESSION['titulo'] = 'Departamento';
+include('../include/header.php');
 
-?>
-
-<?php include('../include/header.php') ?>
-<?php 
-$_SESSION["incio"] = "../inicio.php"; 
+$_SESSION["inicio"] = "../inicio.php"; 
 $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
-include('../include/nav.php');
 
+include('../include/nav.php');
 ?>
+
 <main class="container">
 
     <form action="Controller/insertar.php" method="post">

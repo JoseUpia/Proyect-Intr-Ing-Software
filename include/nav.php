@@ -1,7 +1,7 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg my-0 navbar-dark" style="background: rgb(2, 56, 118);">
   <div class="container-fluid">
-    <a class="navbar-brand" href='<?php echo $_SESSION["inicio"]?>'>ITLA</a>
+    <a class="navbar-brand" href='<?php echo $_SESSION["inicio"]?>'><img src="https://itla.edu.do/wp-content/uploads/2021/03/logo-fondo-azul-preview-1.jpg" width="60px"  alt="Card image cap"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

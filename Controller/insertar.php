@@ -65,26 +65,26 @@
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
-                $_SESSION['message'] = '¡Guardado Correctamente!';
-                $_SESSION['message_type'] =  'success';
-                $_SESSION['message_ico'] = '<use xlink:href="#check-circle-fill"/>';
-
-                header("Location: ../inicio.php");
+                $_SESSION['titulo'] = '¡Guardado!';
+                $_SESSION['text'] =  'El registro se realizado correctamente';
+                $_SESSION['icon'] = 'success';
+                
+                header("Location: ../view/crear.php");
             }
             else{
-                $_SESSION['message'] = '¡Error!' . $consulta . "<br />" . mysqli_error($con);
-                $_SESSION['message_type'] =  'danger';
-                $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
+                $_SESSION['titulo'] = '¡Error!';
+                $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
+                $_SESSION['icon'] = 'error';
 
-                header("Location: ../inicio.php");
+                header("Location: ../view/crear.php");
             }
         }
         else{
-            $_SESSION['message'] = '¡Existen campos vacíos, intentelo otra vez!';
-            $_SESSION['message_type'] =  'warning';
-            $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
+            $_SESSION['titulo'] = '¡Advertencia!';
+            $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
+            $_SESSION['icon'] = 'warning';
 
-            header("Location: ../inicio.php");
+            header("Location: ../view/crear.php");
         }
     }
 
@@ -107,24 +107,24 @@
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
-                $_SESSION['message'] = '¡Guardado Correctamente!';
-                $_SESSION['message_type'] =  'success';
-                $_SESSION['message_ico'] = '<use xlink:href="#check-circle-fill"/>';
+                $_SESSION['titulo'] = '¡Guardado!';
+                $_SESSION['text'] =  'El registro se realizado correctamente';
+                $_SESSION['icon'] = 'success';
 
                 header("Location: ../inicio.php");
             }
             else{
-                $_SESSION['message'] = '¡Error!' . $consulta . "<br />" . mysqli_error($con);
-                $_SESSION['message_type'] =  'danger';
-                $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
+                $_SESSION['titulo'] = '¡Error!';
+                $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
+                $_SESSION['icon'] = 'error';
 
                 header("Location: ../inicio.php");
             }
         }
         else{
-            $_SESSION['message'] = '¡Existen campos vacíos, intentelo otra vez!';
-            $_SESSION['message_type'] =  'warning';
-            $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
+            $_SESSION['titulo'] = '¡Advertencia!';
+            $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
+            $_SESSION['icon'] = 'warning';
 
             header("Location: ../inicio.php");
         }
