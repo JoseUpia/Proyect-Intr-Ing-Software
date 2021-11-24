@@ -14,4 +14,6 @@ $db = 'bdproyecto4';
 
 $con = new mysqli($server, $user, $pass, $db);
 
+
+
 ?>
