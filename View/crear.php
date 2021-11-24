@@ -17,6 +17,7 @@
 
 <?php
 include_once('../Controller/insertar.php');
+//Hola Mundo
 ?>
 
 <?php include("../include/header.php") ?>
@@ -24,6 +25,7 @@ include_once('../Controller/insertar.php');
  <main class="container">
     <h1>Registrar Empleado</h1>
     <form action="../Controller/insertar.php" method="POST">
+
 
         <input type="text" class="form-control" placeholder="ID del departamento" name="departamento_id" required>
         <br />
