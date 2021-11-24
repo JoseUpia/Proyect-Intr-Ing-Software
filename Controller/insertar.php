@@ -12,7 +12,7 @@
     }
 
     function registrarDepartamento(){
-        include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
+        include('../db/conexion.php');
 
         if(isset($_POST['encargado_id'], $_POST['nombre'], $_POST['descripcion']) 
         AND $_POST['encargado_id'] != '' AND $_POST['nombre'] != '' AND $_POST['descripcion'] != ''){
@@ -24,31 +24,31 @@
             $resultado = mysqli_query($con, $consulta);
     
             if($resultado){
-                $_SESSION['titulo'] = '¡Guardado!';
+                $_SESSION['message'] = '¡Guardado!';
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
                 
-                header("Location: ../Departamento.php");
+                header("Location: ../view/crearDepartamento.php");
             }
             else{
-                $_SESSION['titulo'] = '¡Error!';
+                $_SESSION['message'] = '¡Error!';
                 $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
                 $_SESSION['icon'] = 'error';
 
-                header("Location: ../inicio.php");
+                header("Location: ../view/crearDepartamento.php");
             }
         }
         else{
-            $_SESSION['titulo'] = '¡Advertencia!';
+            $_SESSION['message'] = '¡Advertencia!';
             $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
             $_SESSION['icon'] = 'warning';
 
-            header("Location: ../inicio.php");
+            header("Location: ../view/crearDepartamento.php");
         }
     }
 
     function registrarEmpleado(){
-        include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
+        include('../db/conexion.php');
        
         if(isset($_POST['departamento_id'] ,$_POST['nombre'], $_POST['apellido'], $_POST['fecha_nacimiento'], $_POST['direccion'], $_POST['telefono'], $_POST['email'], $_POST['fecha_entrada'])){
             $departamento_id = $_POST['departamento_id'];
@@ -65,14 +65,14 @@
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
-                $_SESSION['titulo'] = '¡Guardado!';
+                $_SESSION['message'] = '¡Guardado!';
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
                 
                 header("Location: ../view/crear.php");
             }
             else{
-                $_SESSION['titulo'] = '¡Error!';
+                $_SESSION['message'] = '¡Error!';
                 $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
                 $_SESSION['icon'] = 'error';
 
@@ -80,7 +80,7 @@
             }
         }
         else{
-            $_SESSION['titulo'] = '¡Advertencia!';
+            $_SESSION['message'] = '¡Advertencia!';
             $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
             $_SESSION['icon'] = 'warning';
 
@@ -90,7 +90,7 @@
 
 
     function registrarEncargado(){
-        include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
+        include('../db/conexion.php');
 
         if(isset($_POST['Enombre'], $_POST['Eapellido'], $_POST['Efecha_nacimiento'], $_POST['Edireccion'], $_POST['Etelefono'], $_POST['Eemail'], $_POST['Efecha_entrada'])
         AND $_POST['Enombre'] != '' AND $_POST['Eapellido'] != '' AND $_POST['Efecha_nacimiento'] != '' AND $_POST['Edireccion'] != '' AND $_POST['Etelefono'] != ''
@@ -107,26 +107,26 @@
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
-                $_SESSION['titulo'] = '¡Guardado!';
+                $_SESSION['message'] = '¡Guardado!';
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
 
-                header("Location: ../inicio.php");
+                header("Location: ../view/crearEncargado.php");
             }
             else{
-                $_SESSION['titulo'] = '¡Error!';
+                $_SESSION['message'] = '¡Error!';
                 $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
                 $_SESSION['icon'] = 'error';
 
-                header("Location: ../inicio.php");
+                header("Location: ../view/crearEncargado.php");
             }
         }
         else{
-            $_SESSION['titulo'] = '¡Advertencia!';
+            $_SESSION['message'] = '¡Advertencia!';
             $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
             $_SESSION['icon'] = 'warning';
 
-            header("Location: ../inicio.php");
+            header("Location: ../view/crearEncargado.php");
         }
     }
 ?>

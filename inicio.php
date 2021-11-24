@@ -1,4 +1,4 @@
-<?php 
+<?php
 $_SESSION['titulo'] = 'Inicio';
 include('include/header.php');
 
@@ -10,20 +10,11 @@ $_SESSION["empleado"] = "view/crear.php";
 include('include/nav.php');
 ?>
 
-
-<main class="container">
-
-    <form action="Controller/insertar.php" method="post">
-        <input type="number" placeholder="ID del Encargado" name="encargado_id">
-        <br />
-        <input type="text" placeholder="Nombre" name="nombre">
-        <br />
-        <input type="text" placeholder="Descripcion" name="descripcion">
-        <br />
-        <button type="submit" name="RegistrarDepartamento">Registrar Departamento</button>
-    </form>
-    
-</main>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum quas, amet voluptas praesentium enim esse impedit, laudantium nihil temporibus quo architecto reiciendis rerum id blanditiis aliquam dolorem, animi laboriosam eligendi?</p>
+<p>Cum vitae qui commodi exercitationem quia doloribus dolore, impedit molestiae earum quidem assumenda architecto culpa in! Praesentium, saepe consequuntur. Ut sequi inventore recusandae doloribus laborum dolore minus itaque corrupti ea.</p>
+<p>Facilis esse eos accusantium amet quas sunt harum quibusdam, voluptatum exercitationem, id atque libero at ea ipsam voluptate accusamus quo provident! Sequi, magnam voluptatem eos alias dolor ullam eveniet pariatur.</p>
+<p>Omnis odio laboriosam repellat excepturi molestiae soluta, ratione illo nisi atque maxime nobis cumque enim nihil consectetur vero reprehenderit, quidem tempora voluptates magnam esse quisquam sunt? Assumenda laborum dolores consequuntur.</p>
+<p>Omnis laborum vero illum, repudiandae, animi harum reprehenderit, totam autem cupiditate officiis fugit consequuntur! Soluta blanditiis assumenda eos ipsam delectus, fuga atque voluptate ut dolores, enim possimus qui, placeat sint.</p>
 
 
 <?php include_once("include/footer.php") ?>

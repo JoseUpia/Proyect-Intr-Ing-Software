@@ -1,10 +1,9 @@
 
 
-function alertaRegistro(ico, titulo, text){
-    alert(ico, titulo, text);
+function alertaRegistro(ico, message, text){
     Swal.fire({
         icon: ico,
-        title: titulo,
+        title: message,
         text: text
     })
 } 

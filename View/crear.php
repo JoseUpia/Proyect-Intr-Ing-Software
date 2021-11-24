@@ -13,14 +13,8 @@ $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
 
-if($_SESSION['titulo']){
-?>
-        <script>
-            alertaRegistro($_SESSION['icon'], $_SESSION['titulo'], $_SESSION['text']);
-        </script>
-<?php
-session_unset();
-}
+
+
 include('../include/nav.php');
 ?>
 
@@ -33,7 +27,6 @@ include('../include/nav.php');
                     <h5 class="modal-title" id="exampleModalLabel">Registrar Empleado</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body">
                     <div class="row mb-5">
                         <div class="col-4">
@@ -48,7 +41,10 @@ include('../include/nav.php');
                     </div>
                     <div class="row mb-5">
                         <div class="col-4">
-                            <input type="tel" class="form-control" placeholder="Telefono" name="telefono" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onpaste="return false" autocomplete="off" maxlength="12" onkeypress="return validarkey(event);" onkeyup="this.value = mascara(this.value)" title="El formato de telefono es: 000-000-0000">
+                            <input type="tel" class="form-control" placeholder="Telefono" name="telefono" required 
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onpaste="return false" autocomplete="off" maxlength="12" 
+                            onkeypress="return validarkey(event);" onkeyup="this.value = mascara(this.value)" 
+                            title="El formato de telefono es: 000-000-0000">
                         </div>
                         <div class="col-4">
                             <input type="email" class="form-control" placeholder="Email" name="email" required>
@@ -58,20 +54,23 @@ include('../include/nav.php');
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-6">
+                        <div class="col-4">
+                            <label></label>
+                            <br />
+                            <input type="text" class="form-control" placeholder="Puesto/Cargo" name="puesto" required>
+                        </div>
+                        <div class="col-4">
                             <label>Fecha de Nacimiento</label>
                             <br />
                             <input type="date" class="form-control" name="fecha_nacimiento">
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <label>Fecha de Entrada</label>
                             <br />
                             <input type="date" class="form-control" name="fecha_entrada" required>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-success" name="RegistrarEmpleado">Registrar Empleado</button>
@@ -80,9 +79,13 @@ include('../include/nav.php');
         </div>
     </div>
 </div>
+
+<!-- Fin del modal -->
+
 <main class="container">
     <h1 class="text-center">Lista de Empleados</h1>
-    <!-- Button trigger modal -->
+
+    <!-- Button del modal -->
     <a href="View/crear.php" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-circle"></i> Crear Empeado</a>
     <div class="table-responsive">
         <table id="tblEmpleados" class="table table-hover table-striped">
@@ -118,9 +121,8 @@ include('../include/nav.php');
                             <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>
                         </td>
                         <td>
-                            <a href="Controller/eliminar.php?ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');"><i class="fas fa-trash-alt"></i></a>
+                            <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');"><i class="fas fa-trash-alt"></i></a>
                         </td>
-
                     </tr>
                 <?php } ?>
         </table>
