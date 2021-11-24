@@ -28,14 +28,14 @@
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
                 
-                header("Location: ../index.php");
+                header("Location: ../inicio.php");
             }
             else{
                 $_SESSION['titulo'] = '¡Error!';
                 $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
                 $_SESSION['icon'] = 'error';
 
-                header("Location: ../index.php");
+                header("Location: ../inicio.php");
             }
         }
         else{
@@ -43,7 +43,7 @@
             $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
             $_SESSION['icon'] = 'warning';
 
-            header("Location: ../index.php");
+            header("Location: ../inicio.php");
         }
     }
 
@@ -69,14 +69,14 @@
                 $_SESSION['message_type'] =  'success';
                 $_SESSION['message_ico'] = '<use xlink:href="#check-circle-fill"/>';
 
-                header("Location: ../index.php");
+                header("Location: ../inicio.php");
             }
             else{
                 $_SESSION['message'] = '¡Error!' . $consulta . "<br />" . mysqli_error($con);
                 $_SESSION['message_type'] =  'danger';
                 $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
 
-                header("Location: ../index.php");
+                header("Location: ../inicio.php");
             }
         }
         else{
@@ -84,7 +84,7 @@
             $_SESSION['message_type'] =  'warning';
             $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
 
-            header("Location: ../index.php");
+            header("Location: ../inicio.php");
         }
     }
 
@@ -111,14 +111,14 @@
                 $_SESSION['message_type'] =  'success';
                 $_SESSION['message_ico'] = '<use xlink:href="#check-circle-fill"/>';
 
-                header("Location: ../index.php");
+                header("Location: ../inicio.php");
             }
             else{
                 $_SESSION['message'] = '¡Error!' . $consulta . "<br />" . mysqli_error($con);
                 $_SESSION['message_type'] =  'danger';
                 $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
 
-                header("Location: ../index.php");
+                header("Location: ../inicio.php");
             }
         }
         else{
@@ -126,7 +126,7 @@
             $_SESSION['message_type'] =  'warning';
             $_SESSION['message_ico'] = '<use xlink:href="#exclamation-triangle-fill"/>';
 
-            header("Location: ../index.php");
+            header("Location: ../inicio.php");
         }
     }
 ?>

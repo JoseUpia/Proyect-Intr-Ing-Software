@@ -19,11 +19,11 @@
 include_once('../Controller/insertar.php');
 ?>
 
-<?php include("C:/xampp/htdocs/Proyect-Intr-Ing-Software/include\header.php") ?>
+<?php include("../include/header.php") ?>
 
  <main class="container">
     <h1>Registrar Empleado</h1>
-    <form action="Controller/insertar.php" method="POST">
+    <form action="../Controller/insertar.php" method="POST">
 
         <input type="text" class="form-control" placeholder="ID del departamento" name="departamento_id" required>
         <br />
