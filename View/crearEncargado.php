@@ -1,11 +1,18 @@
 <?php
-include_once('Controller/insertar.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/Controller/insertar.php');
+
 
 
 ?>
 
-<?php include('include/header.php') ?>
-<?php include('include/nav.php') ?>
+<?php include('../include/header.php') ?>
+<?php 
+$_SESSION["incio"] = "inicio.php"; 
+$_SESSION["departamento"] = "crearDepartamento.php";
+$_SESSION["encargado"] = "crearEncargado.php";
+$_SESSION["empleado"] = "crear.php";
+include('../include/nav.php') 
+?>
 
 
     <form action="Controller/insertar.php" method="post">
@@ -33,4 +40,4 @@ include_once('Controller/insertar.php');
 
 
 
-<?php include_once("include/footer.php") ?>
+<?php include_once("../include/footer.php") ?>

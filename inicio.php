@@ -8,7 +8,14 @@ $Empleados = getEmpleados();
 ?>
 
 <?php include('include/header.php') ?>
-<?php include('include/nav.php') ?>
+<?php
+$_SESSION["incio"] = "inicio.php"; 
+$_SESSION["departamento"] = "view/crearDepartamento.php";
+$_SESSION["encargado"] = "view/crearEncargado.php";
+$_SESSION["empleado"] = "view/crear.php";
+include('include/nav.php'); 
+?>
+
 
 <main class="container">
     <h1 class="text-center">Lista de Empleados</h1>
