@@ -8,13 +8,26 @@ $Empleados = getEmpleados();
 $_SESSION['titulo'] = 'Empleados';
 include('../include/header.php');
 
+if (isset($_SESSION['message'])) {
+?>
+    <script>
+        var title = '<?= $_SESSION['message'] ?>'
+        var text = '<?= $_SESSION['text'] ?>'
+        var ico = '<?= $_SESSION['icon'] ?>'
+
+        alertaRegistro(title, text, ico);
+    </script>
+<?php
+    session_unset();
+}
+
 $_SESSION["inicio"] = "../inicio.php";
 $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
-
-
-
+$_SESSION["empleadoA"] = "active";
+$_SESSION["encargadoA"] = "";
+$_SESSION["departamentoA"] = "";
 include('../include/nav.php');
 ?>
 
@@ -41,10 +54,7 @@ include('../include/nav.php');
                     </div>
                     <div class="row mb-5">
                         <div class="col-4">
-                            <input type="tel" class="form-control" placeholder="Telefono" name="telefono" required 
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onpaste="return false" autocomplete="off" maxlength="12" 
-                            onkeypress="return validarkey(event);" onkeyup="this.value = mascara(this.value)" 
-                            title="El formato de telefono es: 000-000-0000">
+                            <input type="tel" class="form-control" placeholder="Telefono" name="telefono" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onpaste="return false" autocomplete="off" maxlength="12" onkeypress="return validarkey(event);" onkeyup="this.value = mascara(this.value)" title="El formato de telefono es: 000-000-0000">
                         </div>
                         <div class="col-4">
                             <input type="email" class="form-control" placeholder="Email" name="email" required>
@@ -96,7 +106,6 @@ include('../include/nav.php');
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Fecha de Nacimiento</th>
-                    <th>Dirección</th>
                     <th>Telefono</th>
                     <th>Puesto</th>
                     <th>Email</th>
@@ -112,16 +121,13 @@ include('../include/nav.php');
                         <td><?php echo $fila->Nombre; ?></td>
                         <td><?php echo $fila->Apellido; ?></td>
                         <td><?php echo $fila->Fecha_Nacimiento; ?></td>
-                        <td><?php echo $fila->Direccion; ?></td>
-                        <td><?php echo $fila->Telefono; ?></td>
+                        <td style="width: 120px;"><?php echo $fila->Telefono; ?></td>
                         <td><?php echo $fila->Puesto; ?></td>
                         <td><?php echo $fila->Email; ?></td>
                         <td><?php echo $fila->Fecha_Entrada; ?></td>
-                        <td>
+                        <td style="width: 150px;">
                             <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>
-                        </td>
-                        <td>
-                            <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');"><i class="fas fa-trash-alt"></i></a>
+                            <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 <?php } ?>

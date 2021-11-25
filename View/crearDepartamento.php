@@ -8,11 +8,27 @@ $Departamentos = getDepartamentos();
 $_SESSION['titulo'] = 'Departamento';
 include('../include/header.php');
 
+if (isset($_SESSION['message'])) { //Esta condicion alertara cuando se registre algo
+?>
+    <script>
+        var title = '<?= $_SESSION['message'] ?>';
+        var text = '<?= $_SESSION['text'] ?>';
+        var ico = '<?= $_SESSION['icon'] ?>';
+
+        alertaRegistro(title, text, ico);
+    </script>
+<?php
+    session_unset();
+}
+
+
 $_SESSION["inicio"] = "../inicio.php";
 $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
-
+$_SESSION["empleadoA"] = "";
+$_SESSION["encargadoA"] = "";
+$_SESSION["departamentoA"] = "active";
 include('../include/nav.php');
 ?>
 
@@ -69,11 +85,12 @@ include('../include/nav.php');
                 <tr>
                     <td><?php echo $fila->ID; ?></td>
                     <td><?php echo $fila->Encargado; ?></td>
-                    <td><?php echo $fila->Departamento; ?></td>
+                    <td style="width: 200px;"><?php echo $fila->Departamento; ?></td>
                     <td><?php echo $fila->Descripcion; ?></td>
-                    <td>
+                    <td style="width: 150px;">
                         <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>
-                        <a href="../Controller/eliminar.php?Entidad=departamento&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');"><i class="fas fa-trash-alt"></i></a>
+                        <a href="../Controller/eliminar.php?Entidad=departamento&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn"
+                        title="Eliminar registro" onclick="return confirm('Eliminar un encargado puede provocar que se eliminen registros dependientes.')"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             <?php } ?>

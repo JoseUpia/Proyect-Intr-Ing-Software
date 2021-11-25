@@ -24,7 +24,7 @@
             $resultado = mysqli_query($con, $consulta);
     
             if($resultado){
-                $_SESSION['message'] = '¡Guardado!';
+                $_SESSION['message'] = '¡Guardado Satisfactoriamente!';
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
                 
@@ -65,7 +65,7 @@
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
-                $_SESSION['message'] = '¡Guardado!';
+                $_SESSION['message'] = '¡Guardado Satisfactoriamente!';
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
                 
@@ -107,7 +107,7 @@
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
-                $_SESSION['message'] = '¡Guardado!';
+                $_SESSION['message'] = '¡Guardado Satisfactoriamente!';
                 $_SESSION['text'] =  'El registro se realizado correctamente';
                 $_SESSION['icon'] = 'success';
 

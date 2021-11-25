@@ -8,11 +8,28 @@ $Encargados = getEncargados();
 $_SESSION['titulo'] = 'Encargado';
 include('../include/header.php');
 
+if (isset($_SESSION['message'])) {
+?>
+    <script>
+        var title = '<?= $_SESSION['message'] ?>'
+        var text = '<?= $_SESSION['text'] ?>'
+        var ico = '<?= $_SESSION['icon'] ?>'
+
+        alertaRegistro(title, text, ico);
+    </script>
+<?php
+    session_unset();
+}
+
+
+
 $_SESSION["inicio"] = "../inicio.php";
 $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
-
+$_SESSION["empleadoA"] = "";
+$_SESSION["encargadoA"] = "active";
+$_SESSION["departamentoA"] = "";
 include('../include/nav.php')
 ?>
 
@@ -95,13 +112,13 @@ include('../include/nav.php')
                     <td><?php echo $fila->Apellido; ?></td>
                     <td><?php echo $fila->Fecha_Nacimiento; ?></td>
                     <td><?php echo $fila->Direccion; ?></td>
-                    <td><?php echo $fila->Telefono; ?></td>
+                    <td style="width: 120px;"><?php echo $fila->Telefono; ?></td>
                     <td><?php echo $fila->Email; ?></td>
                     <td><?php echo $fila->Fecha_Entrada; ?></td>
 
-                    <td>
+                    <td style="width: 150px;">
                         <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>
-                        <a href="../Controller/eliminar.php?Entidad=encargado&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro" onclick="return confirm('Estás seguro que deseas eliminar el Video?');"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-outline-danger btn-sn" href="../Controller/eliminar.php?Entidad=encargado&ID=<?php echo $fila->ID; ?>" title="Eliminar registro" onclick="return confirm('Eliminar un encargado puede provocar que se eliminen registros dependientes.')"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>
