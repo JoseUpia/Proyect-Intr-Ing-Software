@@ -6,7 +6,11 @@ function getEmpleados(){
 
     return $Empleados;
 }
-
+function getOneEmpleado($empleadoId){
+    include('../db/conexion.php');
+    $Empleado = $con->query("SELECT id, Nombre, Apellido, DATE_FORMAT(Fecha_Entrada, '%d/%m/%Y') as 'Fecha_Entrada' FROM empleado WHERE id = " . $empleadoId);
+    return $Empleado;
+}
 
 function getDepartamentos(){
     include('../db/conexion.php');
