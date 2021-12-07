@@ -27,9 +27,12 @@ $_SESSION["inicio"] = "../inicio.php";
 $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
+$_SESSION['Vacaciones'] = "vacaciones.php";
+
 $_SESSION["empleadoA"] = "";
 $_SESSION["encargadoA"] = "active";
 $_SESSION["departamentoA"] = "";
+$_SESSION['VacacionesA'] = "";
 include('../include/nav.php')
 ?>
 
@@ -91,31 +94,22 @@ include('../include/nav.php')
     <!-- Button del modal -->
     <a href="View/crearEncargado.php" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-circle"></i> Crear Encargado</a>
     <div class="table-responsive">
-        <table id="tblEcarg" class="table table-hover table-striped">
+        <table id="tblEcarg" class="table table-hover table-striped table-fixed">
             <thead>
                 <tr>
-                    <th>ID </th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Dirección</th>
-                    <th>Telefono</th>
-                    <th>Email</th>
-                    <th>Fecha de Entrada</th>
-                    <th>Opciones</th>
+                    <th style="width: 300px;">Nombre</th>
+                    <th style="width: 300px;">Apellido</th>
+                    <th style="width: 300px;">Telefono</th>
+                    <th style="width: 350px;">Email</th>
+                    <th style="width: 150px;">Opciones</th>
             </thead>
             </tr>
             <?php while ($fila = $Encargados->fetch_object()) { ?>
                 <tr>
-                    <td><?php echo $fila->ID; ?></td>
-                    <td><?php echo $fila->Nombre; ?></td>
-                    <td><?php echo $fila->Apellido; ?></td>
-                    <td><?php echo $fila->Fecha_Nacimiento; ?></td>
-                    <td><?php echo $fila->Direccion; ?></td>
-                    <td style="width: 120px;"><?php echo $fila->Telefono; ?></td>
-                    <td><?php echo $fila->Email; ?></td>
-                    <td><?php echo $fila->Fecha_Entrada; ?></td>
-
+                    <td style="width: 300px;"><?php echo $fila->Nombre; ?></td>
+                    <td style="width: 300px;"><?php echo $fila->Apellido; ?></td>
+                    <td style="width: 300px;" style="width: 120px;"><?php echo $fila->Telefono; ?></td>
+                    <td style="width: 350px;"><?php echo $fila->Email; ?></td>
                     <td style="width: 150px;">
                         <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>
                         <a class="btn btn-outline-danger btn-sn" href="../Controller/eliminar.php?Entidad=encargado&ID=<?php echo $fila->ID; ?>" title="Eliminar registro" onclick="return confirm('Eliminar un encargado puede provocar que se eliminen registros dependientes.')"><i class="fas fa-trash-alt"></i></a>

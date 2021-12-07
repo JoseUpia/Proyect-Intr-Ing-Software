@@ -4,6 +4,7 @@ include_once('../Controller/insertar.php');
 #include_once('Controller/eliminar.php');
 
 $Empleados = getEmpleados();
+$NombreD = getNombreD();
 
 $_SESSION['titulo'] = 'Empleados';
 include('../include/header.php');
@@ -25,13 +26,16 @@ $_SESSION["inicio"] = "../inicio.php";
 $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
+$_SESSION['Vacaciones'] = "vacaciones.php";
+
 $_SESSION["empleadoA"] = "active";
 $_SESSION["encargadoA"] = "";
 $_SESSION["departamentoA"] = "";
+$_SESSION['VacacionesA'] = "";
 include('../include/nav.php');
 ?>
 
-<!-- Modal -->
+<!-- Modal registrar departamento -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -43,7 +47,13 @@ include('../include/nav.php');
                 <div class="modal-body">
                     <div class="row mb-5">
                         <div class="col-4">
-                            <input type="text" class="form-control" placeholder="ID del departamento" name="departamento_id" required>
+                            <!--<input type="text" class="form-control" placeholder="ID del departamento" name="departamento_id" required>-->
+                            <select class=" form-select" name="departamento_id">
+                                <option disabled selected>...</option>
+                                <?php while ($fila = $NombreD->fetch_object()) { ?>
+                                    <option value="<?php echo $fila->ID; ?>"><?php echo $fila->Nombre; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-4">
                             <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
@@ -98,40 +108,36 @@ include('../include/nav.php');
     <!-- Button del modal -->
     <a href="View/crear.php" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-circle"></i> Crear Empeado</a>
     <div class="table-responsive">
-        <table id="tblEmpleados" class="table table-hover table-striped">
+        <table id="tblEmpleados" class="table table-hover table-striped table-fixed">
             <thead>
                 <tr>
-                    <th>ID </th>
-                    <th>Departamento </th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Telefono</th>
-                    <th>Puesto</th>
-                    <th>Email</th>
-                    <th>Fecha de Entrada</th>
-                    <th>Opciones</th>
+                    <th style="width: 220px;">Departamento </th>
+                    <th style="width: 200px;">Nombre</th>
+                    <th style="width: 220px;">Apellido</th>
+                    <th style="width: 220px;">Telefono</th>
+                    <th style="width: 220px;">Puesto</th>
+                    <th style="width: 200px;">Email</th>
+                    <th style="width: 130px;">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <?php while ($fila = $Empleados->fetch_object()) { ?>
+                <?php while ($fila = mysqli_fetch_array($Empleados)) { ?>
                     <tr>
-                        <td><?php echo $fila->ID; ?></td>
-                        <td><?php echo $fila->D_Nombre; ?></td>
-                        <td><?php echo $fila->Nombre; ?></td>
-                        <td><?php echo $fila->Apellido; ?></td>
-                        <td><?php echo $fila->Fecha_Nacimiento; ?></td>
-                        <td style="width: 120px;"><?php echo $fila->Telefono; ?></td>
-                        <td><?php echo $fila->Puesto; ?></td>
-                        <td><?php echo $fila->Email; ?></td>
-                        <td><?php echo $fila->Fecha_Entrada; ?></td>
-                        <td style="width: 150px;">
+                        <td style="width: 220px;"><?php echo $fila['D_Nombre']; ?></td>
+                        <td style="width: 200px;"><?php echo $fila['Nombre']; ?></td>
+                        <td style="width: 220px;"><?php echo $fila['Apellido']; ?></td>
+                        <td style="width: 220px;"><?php echo $fila['Telefono']; ?></td>
+                        <td style="width: 190px;"><?php echo $fila['Puesto']; ?></td>
+                        <td style="width: 250px;"><?php echo $fila['Email']; ?></td>
+                        <td style="width: 130px;">
                             <button class="btn btn-outline-primary btn-sn" title="Editar registro"><i class="fas fa-user-edit"></i></button>
-                            <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila->ID; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro"><i class="fas fa-trash-alt"></i></a>
+                            <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila['ID']; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
+            </tbody>
         </table>
+    </div>
 </main>
 
 <?php include_once("../include/footer.php") ?>

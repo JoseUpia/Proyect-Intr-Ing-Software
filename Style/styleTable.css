@@ -1,0 +1,13 @@
+.table-fixed tbody{
+    height: 430px;
+    overflow-y: auto;
+    width: 100%;
+    display: block;
+}
+.table-fixed thead{
+    display: block;
+}
+
+
+
+

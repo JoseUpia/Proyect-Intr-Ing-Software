@@ -1,84 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="Controller/insertar.php" method="post">
-    <input type="text" placeholder="Nombre" name="Enombre">
-    <br />
-    <input type="text" placeholder="Apellido" name="Eapellido">
-    <br />
-    <label>Fecha de Nacimiento</label>
-    <br />
-    <input type="date" name="Efecha_nacimiento">
-    <br />
-    <input type="text" placeholder="Dirección" name="Edireccion">
-    <br />
-    <input type="tel" name="Etelefono" onpaste="return false" autocomplete="off" maxlength="12"  
-    onkeypress="return validarkey(event);" onkeyup="this.value = mascara(this.value)" placeholder="Telefono"
-    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="El formato de telefono es: 000-000-0000">
-    <br />
-    <input type="email" placeholder="Email" name="Eemail">
-    <br />
-    <label>Fecha de Entrada</label>
-    <br />
-    <input type="date" name="Efecha_entrada">
-    <br />
-    <button name="RegistrarEncargado">Registrar Encargado</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="resources/favicon.ico">
 
-<br />
-<h2>Empleados</h2>
-
-<table>
-    <tr>
-        <th>ID </th>
-        <th>Departamento </th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Fecha de Nacimiento</th>
-        <th>Dirección</th>
-        <th>Telefono</th>
-        <th>Puesto</th>
-        <th>Email</th>
-        <th>Fecha de Entrada</th>
-    </tr>
-    <?php while ($fila = $Empleados->fetch_object()) { ?>
-        <tr>
-            <td><?php echo $fila->ID; ?></td>
-            <td><?php echo $fila->D_Nombre; ?></td>
-            <td><?php echo $fila->Nombre; ?></td>
-            <td><?php echo $fila->Apellido; ?></td>
-            <td><?php echo $fila->Fecha_Nacimiento; ?></td>
-            <td><?php echo $fila->Direccion; ?></td>
-            <td><?php echo $fila->Telefono; ?></td>
-            <td><?php echo $fila->Puesto; ?></td>
-            <td><?php echo $fila->Email; ?></td>
-            <td><?php echo $fila->Fecha_Entrada; ?></td>
-        </tr>
-    <?php } ?>
-</table>
-<form action="Controller/insertar.php" method="post">
-    <input type="text" placeholder="ID del departamento" name="departamento_id" id="">
-    <br />
-    <input type="text" placeholder="Nombre" name="nombre">
-    <br />
-    <input type="text" placeholder="Apellido" name="apellido">
-    <br />
-    <label>Fecha de Nacimiento</label>
-    <br />
-    <input type="date" name="fecha_nacimiento">
-    <br />
-    <input type="text" placeholder="Dirección" name="direccion">
-    <br />
-    <input type="tel" name="telefono" onpaste="return false" autocomplete="off" maxlength="12"  
-    onkeypress="return validarkey(event);" onkeyup="this.value = mascara(this.value)" placeholder="Telefono"
-    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="El formato de telefono es: 000-000-0000">
-    <br />
-    <input type="email" placeholder="Email" name="email">
-    <br />
-    <label>Fecha de Entrada</label>
-    <br />
-    <input type="date" name="fecha_entrada">
-    <br />
-    <button name="RegistrarEmpleado">Registrar Empleado</button>
-</form>
+    <link rel="stylesheet" href="style/login.css">
+    <?php
+    include('include/bootstrapHeader.php');
 
 
-<?php include('include/footer.php') ?>
+?>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row mx-auto">
+        <div class="mt-5 pt-5 mx-auto" style="width: 700px;">
+            <div class="card">
+                <div class="">
+                    <h1 class="card-header text-center"><img src="https://plataformavirtual.itla.edu.do/pluginfile.php/1/core_admin/logo/0x200/1636632894/ITLA-logo-fondo-blanco.png" title="Logo del ITLA"></h1>
+                    <div class="card-body">
+                        <div class="row justify-content-md-center">
+  
+                            <?php session_start(); if(isset($_SESSION['Mensaje'])){ echo $_SESSION['Mensaje']; session_destroy(); }?>
+                            <div class="col-md-5">
+                                <form class="mt-3 text-center" action="Controller/login.php" method="post" id="login">
+                                    <div class="form-group">
+                                        <input type="text" name="username" class="form-control" placeholder="Nombre de usuario" required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary btn-block mt-3" id="loginbtn">Iniciar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php include('include/bootstrapFooter.php') ?>
+</body>
+
+</html>

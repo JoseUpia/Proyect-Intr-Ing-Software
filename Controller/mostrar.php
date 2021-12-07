@@ -6,6 +6,7 @@ function getEmpleados(){
 
     return $Empleados;
 }
+
 function getOneEmpleado($empleadoId){
     include('../db/conexion.php');
     $Empleado = $con->query("SELECT id, Nombre, Apellido, DATE_FORMAT(Fecha_Entrada, '%d/%m/%Y') as 'Fecha_Entrada' FROM empleado WHERE id = " . $empleadoId);
@@ -19,12 +20,43 @@ function getDepartamentos(){
     return $Departamento;
 }
 
-
 function getEncargados(){
     include('../db/conexion.php');
     $Encargado = $con->query("SELECT ID, Nombre, Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', Direccion, Telefono, Email, DATE_FORMAT(Fecha_Entrada, '%d/%m/%Y') AS 'Fecha_Entrada' FROM encargado;");
 
     return $Encargado;
+}
+
+function getNombreD(){
+    include('../db/conexion.php');
+    $NombreD = $con->query("SELECT ID, Nombre FROM departamento;");
+    
+    return $NombreD;
+}
+
+function getNombreE(){
+    include('../db/conexion.php');
+    $NombreE = $con->query("SELECT ID, CONCAT_WS(' ', Nombre, Apellido) AS Encargado FROM encargado;");
+
+    return $NombreE;
+}
+
+function getUsuarioByEmail($Email, $db){
+    include($db);
+    $EmpleadoR = 0;
+    $EncargadoR = 0;
+    $EmpleadoR = $con->query("SELECT * FROM empleado WHERE Email = '$Email'");
+    $EncargadoR = $con->query("SELECT * FROM encargado WHERE Email = '$Email'");
+
+    if(mysqli_num_rows($EmpleadoR) > 0){
+        $EmpleadoR = $EmpleadoR->fetch_object();
+        return $EmpleadoR;
+    }
+    else if(mysqli_num_rows($EncargadoR) > 0){
+        $EncargadoR = $EncargadoR->fetch_object();
+        return $EncargadoR;
+    }
+    return "Usuario no encontrado";
 }
 
 ?>
