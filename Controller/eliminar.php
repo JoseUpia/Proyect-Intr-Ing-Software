@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include($_SERVER['DOCUMENT_ROOT'].'/Aprendizaje PHP/db/conexion.php');
+include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
 
 $entidad = $_REQUEST['Entidad'] ;
 $id    	 = $_REQUEST['ID']; 
@@ -22,6 +22,11 @@ if($resultProd){
         $_SESSION['eliminar'] = 'Departamento';
 
         header("Location:../view/crearDepartamento.php");
+        
+    }elseif($entidad == 'nomina_empleado'){
+        $_SESSION['eliminar'] = 'Nomina';
+
+        header("Location:../view/moduloNomina.php");
     }
 }
 
