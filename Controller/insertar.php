@@ -53,7 +53,7 @@
     function registrarEmpleado(){
         include('../db/conexion.php');
        
-        if(isset($_POST['departamento_id'] ,$_POST['nombre'], $_POST['apellido'], $_POST['fecha_nacimiento'], $_POST['direccion'], $_POST['telefono'], $_POST['email'], $_POST['fecha_entrada'])){
+        if(isset($_POST['departamento_id'] ,$_POST['nombre'], $_POST['apellido'], $_POST['fecha_nacimiento'], $_POST['direccion'], $_POST['telefono'], $_POST['email'], $_POST['password'], $_POST['fecha_entrada'], $_POST['sueldo'])){
             $departamento_id = $_POST['departamento_id'];
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
@@ -62,9 +62,11 @@
             $telefono = $_POST['telefono'];
             $puesto = $_POST['puesto'];
             $email = $_POST['email'];
+            $password = $_POST['password'];
             $fecha_entrada = $_POST['fecha_entrada'];
+            $sueldo = $_POST['sueldo'];
     
-            $consulta = "INSERT INTO empleado (Departamento_ID ,Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Puesto, Email, Fecha_Entrada) VALUES ('$departamento_id', '$nombre', '$apellido', '$fecha_nacimiento', '$direccion', '$telefono', '$puesto', '$email', '$fecha_entrada')";
+            $consulta = "INSERT INTO empleado (Departamento_ID ,Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Puesto, Email, Contr, Fecha_Entrada, sueldo) VALUES ('$departamento_id', '$nombre', '$apellido', '$fecha_nacimiento', '$direccion', '$telefono', '$puesto', '$email', '$password', '$fecha_entrada', '$sueldo')";
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){
@@ -95,7 +97,7 @@
     function registrarEncargado(){
         include('../db/conexion.php');
 
-        if(isset($_POST['Enombre'], $_POST['Eapellido'], $_POST['Efecha_nacimiento'], $_POST['Edireccion'], $_POST['Etelefono'], $_POST['Eemail'], $_POST['Efecha_entrada'])
+        if(isset($_POST['Enombre'], $_POST['Eapellido'], $_POST['Efecha_nacimiento'], $_POST['Edireccion'], $_POST['Etelefono'], $_POST['Eemail'], $_POST['Epassword'], $_POST['Efecha_entrada'])
         AND $_POST['Enombre'] != '' AND $_POST['Eapellido'] != '' AND $_POST['Efecha_nacimiento'] != '' AND $_POST['Edireccion'] != '' AND $_POST['Etelefono'] != ''
         AND $_POST['Eemail'] != '' AND $_POST['Efecha_entrada'] != ''){
             $nombre = $_POST['Enombre'];
@@ -105,8 +107,9 @@
             $telefono = $_POST['Etelefono'];
             $email = $_POST['Eemail'];
             $fecha_entrada = $_POST['Efecha_entrada'];
+            $password = $_POST['password'];
     
-            $consulta = "INSERT INTO encargado (Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Email, Fecha_Entrada) VALUES ('$nombre', '$apellido', '$fecha_nacimiento', '$direccion', '$telefono', '$email', '$fecha_entrada')";
+            $consulta = "INSERT INTO encargado (Nombre, Apellido, Fecha_Nacimiento, Direccion, Telefono, Email, Contr, Fecha_Entrada) VALUES ('$nombre', '$apellido', '$fecha_nacimiento', '$direccion', '$telefono', '$email', '$password', '$fecha_entrada')";
             $resultado = mysqli_query($con, $consulta);
 
             if($resultado){

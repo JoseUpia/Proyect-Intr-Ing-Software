@@ -1,7 +1,6 @@
 <?php
 
 
-
 ?>
 
 <nav class="navbar navbar-expand-lg my-0 navbar-dark" style="background: rgb(2, 56, 118);">
@@ -21,11 +20,13 @@
         <li class="nav-item">
           <a class="nav-link <?= $_SESSION['VacacionesA'] ?>" href='<?php echo $_SESSION["Vacaciones"] ?>'>Vacaciones</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $_SESSION['NominaA'] ?>" href='<?php echo $_SESSION["Nomina"] ?>'>Nomina</a>
+        </li>
       </ul>
     </div>
     <div class="nav-Right">
       <ul class="navbar-nav">
-        <li class="nav-link"><a><i class="bi bi-person-circle"></i> <?php echo $_SESSION['Empleado'] ?></a></li>
         <li class="nav-item">
           <a class="nav-link" href="http://localhost/Proyect-Intr-Ing-Software/index.php">Cerrar Sesión</a>
         </li>

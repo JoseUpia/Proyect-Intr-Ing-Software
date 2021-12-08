@@ -28,7 +28,9 @@ $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
 $_SESSION['Vacaciones'] = "vacaciones.php";
+$_SESSION['Nomina'] = "moduloNomina.php";
 
+$_SESSION["NominaA"] = "";
 $_SESSION["empleadoA"] = "";
 $_SESSION["encargadoA"] = "active";
 $_SESSION["departamentoA"] = "";
@@ -58,10 +60,13 @@ include('../include/nav.php')
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-6">
+                        <div class="col-4">
                             <input type="email" class="form-control" placeholder="Email" name="Eemail" required>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="Epassword" required>
+                        </div>
+                        <div class="col-4">
                             <input type="text" class="form-control" placeholder="Dirección" name="Edireccion" required>
                         </div>
                     </div>

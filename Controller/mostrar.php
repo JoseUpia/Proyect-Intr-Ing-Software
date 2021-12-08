@@ -60,7 +60,7 @@ function getUsuarioByEmail($Email, $db){
 }
 
 function getNomina(){
-    include('../db/conexion.php');
+    include('../../db/conexion.php');
     $Nomina = $con->query("SELECT N.ID, N.ID_Empleado, CONCAT_WS(' ', E.Nombre, E.Apellido) AS Empleado, N.Salario_Base, N.Comision, N.ISR, N.AFP, N.SFS, N.Salirio_Final, DATE_FORMAT(N.Fecha_Nomina, '%d/%m/%Y') as 'Fecha_Nomina' FROM nomina_empleado AS N INNER JOIN empleado AS E ON N.ID_Empleado = E.ID WHERE YEAR(Fecha_Nomina) = YEAR(CURRENT_DATE()) AND MONTH(Fecha_Nomina) = MONTH(CURRENT_DATE()) AND TO_DAYS(Fecha_Nomina)= TO_DAYS(NOW());");
 
     return $Nomina;

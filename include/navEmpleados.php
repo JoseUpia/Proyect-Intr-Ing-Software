@@ -16,7 +16,7 @@ $_SESSION['Empleado'] = $UsuarioR->Nombre;
                     <a class="nav-link" href="vacaciones.php">Solicitar Vacaciones</a>
                 </li>
                 <li class="nav-item btn">
-                    <a class="nav-link">Ver nomina</a>
+                    <a class="nav-link" href="VistaNominaEmpleado.php">Ver nomina</a>
                 </li>
             </ul>
         </div>

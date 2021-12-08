@@ -27,7 +27,9 @@ $_SESSION["departamento"] = "crearDepartamento.php";
 $_SESSION["encargado"] = "crearEncargado.php";
 $_SESSION["empleado"] = "crear.php";
 $_SESSION['Vacaciones'] = "vacaciones.php";
+$_SESSION['Nomina'] = "moduloNomina.php";
 
+$_SESSION["NominaA"] = "";
 $_SESSION["empleadoA"] = "active";
 $_SESSION["encargadoA"] = "";
 $_SESSION["departamentoA"] = "";
@@ -70,7 +72,7 @@ include('../include/nav.php');
                             <input type="email" class="form-control" placeholder="Email" name="email" required>
                         </div>
                         <div class="col-4">
-                            <input type="text" class="form-control" placeholder="Dirección" name="direccion" required>
+                            <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
                         </div>
                     </div>
                     <div class="row mb-5">
@@ -90,6 +92,14 @@ include('../include/nav.php');
                             <input type="date" class="form-control" name="fecha_entrada" required>
                         </div>
                     </div>
+                    <div class="row mb-5">
+                        <div class="col-6">
+                            <input class="form-control" placeholder="Dirección" name="direccion" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="number" class="form-control" placeholder="Sueldo" name="sueldo" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -99,12 +109,9 @@ include('../include/nav.php');
         </div>
     </div>
 </div>
-
 <!-- Fin del modal -->
-
 <main class="container">
     <h1 class="text-center">Lista de Empleados</h1>
-
     <!-- Button del modal -->
     <a href="View/crear.php" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-circle"></i> Crear Empeado</a>
     <div class="table-responsive">
@@ -134,78 +141,73 @@ include('../include/nav.php');
                             <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila['ID']; ?>" class="btn btn-outline-danger btn-sn" title="Eliminar registro"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                        <!-- Modal Editar-->
-                        <div class="modal fade" id="empleado<?php echo $fila['ID']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Editar Empleados</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- Modal Editar-->
+                    <div class="modal fade" id="empleado<?php echo $fila['ID']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Empleados</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">                             
+                                    </button>
+                                </div>
+                                <div class="modal-body">
                                     <form action="../Controller/actualizar.php?Entidad=empleado" method="POST">
                                         <input type="hidden" name="ID" id="ID" value="<?php echo $fila['ID']; ?>">
                                         <div class="row mb-5">
-                                        <div class="col-4">
-                                            <label for="">ID Departamento</label>
-                                            <input type="text" name="departamento" id="departamento" class="form-control" value="<?php echo $fila['Departamento_ID']; ?>" >
-                                        </div>
-                                        
-                                        <div class="col-4">
-                                            <label for="">Nombre</label>
-                                            <input type="text" name="nombre"  id="nombre" class="form-control" value="<?php echo $fila['Nombre']; ?>" >
-                                        </div>
-                                        <div class="col-4">
-                                            <label for="">Apellido</label>
-                                            <input type="text" name="apellido"  id="apellido" class="form-control" value="<?php echo $fila['Apellido']; ?>" >
-                                        </div>
-                                        </div>
-                                        <div class="row mb-5">
-                                        <div class="col-4">
-                                            <label for="">Fecha de Nacimiento</label>
-                                            <br />
-                                            <input type="date" name="Fecha_Nacimiento"  id="Fecha_Nacimiento" class="form-control" value="<?php echo $fila['Fecha_Nacimiento']; ?>" >
-                                        </div>
-                                        <div class="col-4">
-                                            <label for="">Telefono</label>
-                                            <input type="tel" name="telefono"  id="telefono" class="form-control" value="<?php echo $fila['Telefono']; ?>" >
-                                        </div>
-                                        <div class="col-4">
-                                            <label for="">Puesto</label>
-                                            <input type="text" name="puesto"  id="puesto" class="form-control" value="<?php echo $fila['Puesto']; ?>" >
-                                        </div>                                         
+                                            <div class="col-4">
+                                                <label for="">ID Departamento</label>
+                                                <input type="text" name="departamento" id="departamento" class="form-control" value="<?php echo $fila['Departamento_ID']; ?>">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="">Nombre</label>
+                                                <input type="text" name="nombre" id="nombre" class="form-control" value="<?php echo $fila['Nombre']; ?>">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="">Apellido</label>
+                                                <input type="text" name="apellido" id="apellido" class="form-control" value="<?php echo $fila['Apellido']; ?>">
+                                            </div>
                                         </div>
                                         <div class="row mb-5">
-                                        <div class="col-4">
-                                            <label for="">Email</label>
-                                            <input type="email" name="email"  id="email" class="form-control" value="<?php echo $fila['Email']; ?>" >
+                                            <div class="col-4">
+                                                <label for="">Fecha de Nacimiento</label>
+                                                <br />
+                                                <input type="date" name="Fecha_Nacimiento" id="Fecha_Nacimiento" class="form-control" value="<?php echo $fila['Fecha_Nacimiento']; ?>">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="">Telefono</label>
+                                                <input type="tel" name="telefono" id="telefono" class="form-control" value="<?php echo $fila['Telefono']; ?>">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="">Puesto</label>
+                                                <input type="text" name="puesto" id="puesto" class="form-control" value="<?php echo $fila['Puesto']; ?>">
+                                            </div>
                                         </div>
-                                        
-                                        <div class="col-4">
-                                            <label for="">Fecha de Entrada</label>
-                                            <br />
-                                            <input type="date" name="Fecha_Entrada"  id="Fecha_Entrada" class="form-control" value="<?php echo $fila['Fecha_Entrada']; ?>" >
-                                        </div> 
-                                        <div class="col-4">
-                                            <label for="">Sueldo</label>
-                                            <br />
-                                            <input type="text" name="sueldo"  id="sueldo" class="form-control" value="<?php echo $fila['sueldo']; ?>" >
-                                        </div>  
-
+                                        <div class="row mb-5">
+                                            <div class="col-4">
+                                                <label for="">Email</label>
+                                                <input type="email" name="email" id="email" class="form-control" value="<?php echo $fila['Email']; ?>">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="">Fecha de Entrada</label>
+                                                <br />
+                                                <input type="date" name="Fecha_Entrada" id="Fecha_Entrada" class="form-control" value="<?php echo $fila['Fecha_Entrada']; ?>">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="">Sueldo</label>
+                                                <br />
+                                                <input type="text" name="sueldo" id="sueldo" class="form-control" value="<?php echo $fila['sueldo']; ?>">
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                         </div>
                                     </form>
-                        
-                                    </div>
-                                    
-                                    </div>
                                 </div>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php } ?>
             </tbody>
         </table>

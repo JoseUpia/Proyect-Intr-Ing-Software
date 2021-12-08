@@ -15,7 +15,9 @@ $_SESSION["departamento"] = "view/crearDepartamento.php";
 $_SESSION["encargado"] = "view/crearEncargado.php";
 $_SESSION["empleado"] = "view/crear.php";
 $_SESSION['Vacaciones'] = "view/vacaciones.php";
+$_SESSION['Nomina'] = "view/moduloNomina.php";
 
+$_SESSION["NominaA"] = "";
 $_SESSION["empleadoA"] = "";
 $_SESSION["encargadoA"] = "";
 $_SESSION["departamentoA"] = "";

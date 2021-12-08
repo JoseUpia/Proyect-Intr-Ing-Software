@@ -5,14 +5,22 @@ include('../db/conexion.php');
 
 $entidad = $_REQUEST['Entidad'] ;
 $id    	 = $_REQUEST['ID']; 
-$ruta    = $_REQUEST['Ruta'];
 
-$sqlDeleteProd    = ("DELETE FROM $entidad WHERE  ID='" .$id. "'");
+if(isset($_REQUEST['Ruta'])){
+    $ruta    = $_REQUEST['Ruta'];
+}
+
+
+$sqlDeleteProd    = ("DELETE FROM $entidad WHERE  ID=$id");
 $resultProd 	  = mysqli_query($con, $sqlDeleteProd);
+echo $sqlDeleteProd;
 
 if($resultProd){
+    echo "Dentro del if";
+
     if($entidad == 'empleado'){   
         $_SESSION['eliminar'] = 'Empleado';
+        echo "Dentro del empleado";
 
         header("Location:../view/crear.php");
     }elseif($entidad == 'encargado'){
