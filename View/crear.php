@@ -110,8 +110,7 @@ include('../include/nav.php');
                     <th>Telefono</th>
                     <th>Puesto</th>
                     <th>Email</th>
-                    <th>Fecha de Entrada</th>
-                    <th>Sueldo</th>                    
+                    <th>Fecha de Entrada</th>                                        
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -128,7 +127,7 @@ include('../include/nav.php');
                         <td><?php echo $fila['Puesto']; ?></td>
                         <td><?php echo $fila['Email']; ?></td>
                         <td><?php echo $fila['Fecha_Entrada']; ?></td>
-                        <td><?php echo $fila['sueldo']; ?></td>
+                        
                         <td style="width: 150px;">
                             <button class="btn btn-outline-primary btn-sn" type="button" title="Editar registro" data-bs-toggle="modal" data-bs-target="#empleado<?php echo $fila['ID']; ?>"><i class="fas fa-user-edit"></i></button>                      
                             <a href="../Controller/eliminar.php?Entidad=empleado&ID=<?php echo $fila['ID']; ?>" class="btn btn-outline-danger btn-sn" onclick="return confirm('Estás seguro que deseas eliminar el Registro?');" title="Eliminar registro"><i class="fas fa-trash-alt"></i></a>
@@ -187,12 +186,7 @@ include('../include/nav.php');
                                             <label for="">Fecha de Entrada</label>
                                             <br />
                                             <input type="date" name="Fecha_Entrada"  id="Fecha_Entrada" class="form-control" value="<?php echo $fila['Fecha_Entrada']; ?>" >
-                                        </div> 
-                                        <div class="col-4">
-                                            <label for="">Sueldo</label>
-                                            <br />
-                                            <input type="text" name="sueldo"  id="sueldo" class="form-control" value="<?php echo $fila['sueldo']; ?>" >
-                                        </div>  
+                                        </div>                                         
 
                                         </div>
                                         <div class="modal-footer">
