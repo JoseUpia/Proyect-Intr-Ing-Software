@@ -2,7 +2,7 @@
 
 function getEmpleados(){
     include('../db/conexion.php');
-    $Empleados = $con->query("SELECT E.ID, D.Nombre AS D_Nombre, E.Nombre, E.Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', E.Direccion, E.Telefono, E.Puesto, E.Email, DATE_FORMAT(Fecha_Entrada,'%d/%m/%Y') AS 'Fecha_Entrada' FROM empleado AS E INNER JOIN departamento AS D ON E.Departamento_ID = D.ID;");
+    $Empleados = $con->query("SELECT E.ID, D.Nombre AS D_Nombre, E.Departamento_ID, E.Nombre, E.Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', E.Direccion, E.Telefono, E.Puesto, E.Email, DATE_FORMAT(Fecha_Entrada,'%d/%m/%Y') AS 'Fecha_Entrada', E.sueldo FROM empleado AS E INNER JOIN departamento AS D ON E.Departamento_ID = D.ID;");
 
     return $Empleados;
 }
@@ -59,4 +59,17 @@ function getUsuarioByEmail($Email, $db){
     return "Usuario no encontrado";
 }
 
+function getNomina(){
+    include('../db/conexion.php');
+    $Nomina = $con->query("SELECT N.ID, N.ID_Empleado, CONCAT_WS(' ', E.Nombre, E.Apellido) AS Empleado, N.Salario_Base, N.Comision, N.ISR, N.AFP, N.SFS, N.Salirio_Final, DATE_FORMAT(N.Fecha_Nomina, '%d/%m/%Y') as 'Fecha_Nomina' FROM nomina_empleado AS N INNER JOIN empleado AS E ON N.ID_Empleado = E.ID WHERE YEAR(Fecha_Nomina) = YEAR(CURRENT_DATE()) AND MONTH(Fecha_Nomina) = MONTH(CURRENT_DATE()) AND TO_DAYS(Fecha_Nomina)= TO_DAYS(NOW());");
+
+    return $Nomina;
+}
+
+function getDescuento(){
+    include('../db/conexion.php');
+    $Descuento = $con->query("SELECT ID, SFS, ISR_Basico, ISR_Mediano, ISR_Alto, AFP FROM descuentos;");
+
+    return $Descuento;
+}
 ?>

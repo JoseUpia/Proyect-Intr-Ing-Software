@@ -10,6 +10,9 @@
     elseif(isset($_POST['RegistrarEncargado'])){
         registrarEncargado();
     }
+    elseif(isset($_POST['RegistrarNomina'])){
+        registrarNomina();
+    }
 
     function registrarDepartamento(){
         include('../db/conexion.php');
@@ -127,6 +130,42 @@
             $_SESSION['icon'] = 'warning';
 
             header("Location: ../view/crearEncargado.php");
+        }
+    }
+
+    function registrarNomina(){
+        include('../db/conexion.php');
+       
+        if(isset($_POST['ID_Empleado'], $_POST['Salario_Base'], $_POST['Comision'])
+        AND $_POST['ID_Empleado'] != '' AND $_POST['Salario_Base'] != '' AND $_POST['Comision'] != ''){
+            $id = $_POST['ID_Empleado'];
+            $salario_Base = $_POST['Salario_Base'];
+            $comision = $_POST['Comision'];
+                
+            $consulta = "INSERT INTO nomina_empleado (ID_Empleado, Salario_Base, Comision) VALUES ('$id', '$salario_Base', '$comision')";
+            $resultado = mysqli_query($con, $consulta);
+
+            if($resultado){
+                $_SESSION['message'] = '¡Guardado Satisfactoriamente!';
+                $_SESSION['text'] =  'El registro se realizado correctamente';
+                $_SESSION['icon'] = 'success';
+                
+                header("Location: ../view/moduloNomina.php");
+            }
+            else{
+                $_SESSION['message'] = '¡Error!';
+                $_SESSION['text'] =  $consulta . "<br />" . mysqli_error($con);
+                $_SESSION['icon'] = 'error';
+
+                header("Location: ../view/moduloNomina.php");
+            }
+        }
+        else{
+            $_SESSION['message'] = '¡Advertencia!';
+            $_SESSION['text'] =  'Existen campos vacíos, intentelo otra vez';
+            $_SESSION['icon'] = 'warning';
+
+            header("Location: ../view/moduloNomina.php");
         }
     }
 ?>

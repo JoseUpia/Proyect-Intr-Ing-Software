@@ -23,6 +23,11 @@ if($resultProd){
         $_SESSION['eliminar'] = 'Departamento';
 
         header("Location:../view/crearDepartamento.php");
+        
+    }elseif($entidad == 'nomina_empleado'){
+        $_SESSION['eliminar'] = 'Nomina';
+
+        header("Location:../view/moduloNomina.php");
     }
     elseif($entidad == "solicitudVacaciones" && $ruta == "Encargado"){
         $_SESSION['eliminar'] = 'vacaciones';
