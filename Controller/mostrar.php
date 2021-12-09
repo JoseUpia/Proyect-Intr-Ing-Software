@@ -2,7 +2,7 @@
 
 function getEmpleados(){
     include('../db/conexion.php');
-    $Empleados = $con->query("SELECT E.ID, D.Nombre AS D_Nombre, E.Departamento_ID, E.Nombre, E.Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', E.Direccion, E.Telefono, E.Puesto, E.Email, DATE_FORMAT(Fecha_Entrada,'%d/%m/%Y') AS 'Fecha_Entrada', E.sueldo FROM empleado AS E INNER JOIN departamento AS D ON E.Departamento_ID = D.ID;");
+    $Empleados = $con->query("SELECT E.ID, D.Nombre AS D_Nombre, E.Departamento_ID, E.Nombre, E.Apellido, DATE_FORMAT(Fecha_Nacimiento, '%d/%m/%Y') as 'Fecha_Nacimiento', E.Direccion, E.Telefono, E.Puesto, E.Email, DATE_FORMAT(Fecha_Entrada,'%d/%m/%Y') AS 'Fecha_Entrada' FROM empleado AS E INNER JOIN departamento AS D ON E.Departamento_ID = D.ID;");
 
     return $Empleados;
 }
