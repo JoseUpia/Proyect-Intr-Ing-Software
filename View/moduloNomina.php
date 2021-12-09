@@ -84,20 +84,29 @@ include('../include/nav.php');
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    <form action="../Controller/actualizarNomina.php?Entidad=nomina_emp" method="POST">
-                                        <input type="hidden" name="ID" id="ID" value="<?php echo $fila['ID_Empleado']; ?>">
-                                        <div class="row mb-5">
-                                            <div class="form-group col-4">
-                                                <label for="">Comision</label>
-                                                <input type="text" name="Comision" id="Comision" class="form-control" value="<?php echo $fila['Comision']; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                        </div>
-                                    </form>
+                                <div class="modal-body">                             
+                                <form action="../Controller/actualizarNomina.php?Entidad=nomina_emp" method="POST">
+                                    <input type="hidden" name="ID" id="ID" value="<?php echo $fila['ID_Empleado']; ?>">
+                                    <div class="row mb-5"> 
+
+                                    <div class="form-group col-4">
+                                        <label for="">Salario</label>
+                                        <input type="text" name="salario"  id="salario" class="form-control" value="<?php echo $fila['Salario_Base']; ?>" >
+                                    </div>  
+
+                                    <div class="form-group col-4">
+                                        <label for="">Comision</label>
+                                        <input type="text" name="Comision"  id="Comision" class="form-control" value="<?php echo $fila['Comision']; ?>" >
+                                    </div>                                   
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                    </div>
+                                </form>
+                    
+                                </div>
+                                
                                 </div>
                             </div>
                         </div>

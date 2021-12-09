@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include($_SERVER['DOCUMENT_ROOT'].'/PROYECT-INTR-ING-SOFTWARE/db/conexion.php');
+include('../db/conexion.php');
 $entidad = $_REQUEST['Entidad'] ;
 
 if($entidad == 'descuentos'){
@@ -9,8 +9,10 @@ if($entidad == 'descuentos'){
 }elseif($entidad == 'nomina_emp'){
     actualizarNomina();
 }elseif($entidad == 'generar'){
+
     Procedimiento();
     Listado(); 
+
 }
 
 
@@ -34,7 +36,9 @@ function Procedimiento(){
 }
 
 function Listado(){
+    
     include('../db/conexion.php');
+
     $proce = $con->query("call listado()");
     //return $procedimiento;
     echo "<script type='text/javascript'>

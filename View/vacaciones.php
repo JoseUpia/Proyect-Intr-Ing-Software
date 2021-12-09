@@ -39,7 +39,6 @@ require('../include/nav.php');
 $vacaciones = getSolicitudVacaciones($UsuarioR->ID);
 
 
-
 if (isset($_GET["id"]) && isset($_GET["estado"])) {
     actualizarEstadoById($_GET['id'], $_GET['estado']);
 }
@@ -63,6 +62,7 @@ if (isset($_GET["id"]) && isset($_GET["estado"])) {
             </thead>
             <tbody>
                 <?php while ($fila = mysqli_fetch_array($vacaciones)) { ?>
+                    
                     <tr id="row-<?php echo $fila['ID'] ?>">
                         <td class="text-center" style="width: 200px;"><?php echo $fila['Empleado']; ?></td>
                         <td class="text-center" style="width: 200px;"><?php

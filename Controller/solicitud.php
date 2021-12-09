@@ -59,8 +59,9 @@ function getSolicitudVacaciones($ID){
     FROM solicitudvacaciones AS sV
     INNER JOIN empleado E ON E.ID = sV.Empleado_ID
     INNER JOIN departamento D ON D.ID = E.Departamento_ID
-    WHERE D.Encargado_ID = '$ID';");
+    WHERE D.Encargado_ID = $ID");
 
+    
     return $Empleados;
 }
 
